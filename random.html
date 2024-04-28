@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      background: blue;
+    }
+    #picture {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 200px;
+      transition: all 0.3s;
+    }
+    #score {
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      color: white;
+    }
+  </style>
+  <body>
+    <img
+      src="https://img.freepik.com/free-vector/hot-dog-street-snack-isolated-transparent_107791-18353.jpg"
+      id="picture"
+    />
+    <h1 id="score">0</h1>
+  </body>
+  <script>
+    let picture = document.getElementById("picture");
+    let score = document.getElementById("score");
+    let num = 0;
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    function movePicture() {
+      picture.style.left = `${getRndInteger(0, 50)}%`;
+      picture.style.top = `${getRndInteger(0, 50)}%`;
+    }
+    function plusNum() {
+      num++;
+      score.innerHTML = num;
+      if (num >= 3) {
+        picture.style.display = "none";
+      }
+    }
+    setInterval(movePicture, 1000);
+    picture.addEventListener("click", plusNum);
+  </script>
+</html>
